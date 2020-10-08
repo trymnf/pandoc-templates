@@ -390,23 +390,7 @@ $endif$
 \subtitle{$subtitle$}
 $endif$
 $if(author)$
-    \usepackage{authblk}
-    $if(address)$
-        $for(author)$
-            \author[$author.affiliation$]{$author.name$}
-        $endfor$
-        $for(address)$
-            \affil[$address.code$]{$address.address$}
-        $endfor$
-    $else$
-        $for(author)$
-            $if(author.name)$
-                \author{$author.name$}
-            $else$
-                \author{$author$}
-            $endif$
-        $endfor$ 
-    $endif$
+\author{$for(author)$\large $if(author.name)$ $author.name$ $else$ $author$ $endif$$if(author.affiliation)$ \vspace{0.05in} \\ \normalsize\emph{$author.affiliation$}$endif$$if(author.email)$ \\ \footnotesize \url{$author.email$}\vspace*{0.2in}$endif$\\ $sep$ \and $endfor$}
 $endif$
 \date{$date$}
 $if(beamer)$
