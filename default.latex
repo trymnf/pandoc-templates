@@ -21,7 +21,8 @@ $if(lang)$
   $babel-lang$,
 $endif$
 $if(papersize)$
-  $papersize$paper,
+  $papersize$paper,$else$
+  a4paper,
 $endif$
 $if(beamer)$
   ignorenonframetext,
@@ -403,6 +404,21 @@ $endif$
 $if(logo)$
 \logo{\includegraphics{$logo$}}
 $endif$
+$endif$
+
+$if(timestamp)$
+\usepackage{fancyhdr}
+\usepackage{datetime}
+
+\pagestyle{fancy}
+\usdate
+
+\lhead{}
+\chead{}
+\rhead{}
+\rfoot{\footnotesize {\color{gray}\texttt{\today{} \currenttime}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 $endif$
 
 \begin{document}
