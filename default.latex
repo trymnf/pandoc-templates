@@ -125,7 +125,7 @@ $if(mainfont)$
 $endif$
 $if(sansfont)$
   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$} $else$
-  \setsansfont{'IBM Plex Sans'}
+  \setsansfont{IBM Plex Sans}
 $endif$
 $if(monofont)$
   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$} $else$
@@ -380,6 +380,11 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% for highlights
+\usepackage{soul}
+\DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
+
 $if(lang)$
 \ifXeTeX
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
