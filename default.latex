@@ -391,9 +391,8 @@ $endfor$
 \let\LanguageShortHands\languageshorthands
 \def\languageshorthands#1{}
 $endif$
-$for(header-includes)$
-$header-includes$
-$endfor$
+
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
