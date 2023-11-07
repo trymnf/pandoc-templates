@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{memoir}
+\documentclass[12pt, a4paper, onepage, article]{memoir}
 
 % \documentclass[
 % $if(fontsize)$
@@ -518,9 +518,6 @@ $if(beamer)$
 \frame{\titlepage}
 $else$
 \maketitle
-\clearpage
-\printcolophon
-\clearpage
 $endif$
 $if(abstract)$
 \begin{abstract}
@@ -529,19 +526,11 @@ $abstract$
 $endif$
 $endif$
 
-$if(acknowledgements)$
-\chapter{Acknowledgements}
-
-$acknowledgements$
-
-$endif$
-
 $for(include-before)$
 $include-before$
 
 $endfor$
 $if(toc)$
-\cleartorecto
 $if(toc-title)$
 \renewcommand*\contentsname{$toc-title$}
 $endif$
@@ -558,9 +547,7 @@ $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
-\setSpacing{1}
 \tableofcontents
-\setSpacing{$linestretch$}
 }
 $endif$
 $endif$

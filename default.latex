@@ -377,6 +377,8 @@ $endfor$
 \usepackage{soul}
 \DeclareRobustCommand{\hlpink}[1]{{\sethlcolor{pink}\hl{#1}}}
 
+$if(timestamp)$\usepackage{datetime}$endif$
+
 $if(lang)$
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -437,10 +439,12 @@ $else$
 $endif$
 \subtitle{$subtitle$}
 $endif$
+
 $if(author)$
 \author{$for(author)$\large $if(author.name)$ $author.name$ $else$ $author$ $endif$$if(author.affiliation)$ \vspace{0.05in} \\ \normalsize\emph{$author.affiliation$}$endif$$if(author.email)$ \\ \footnotesize \url{$author.email$}\vspace*{0.2in}$endif$\\ $sep$ \and $endfor$}
 $endif$
-\date{$date$}
+\date{$date$\\$if(timestamp)$\footnotesize{\color{gray}\textit{(This version: \usdate\today{}, \currenttime)}}$endif$}
+
 $if(beamer)$
 $if(institute)$
 \institute{$for(institute)$$institute$$sep$ \and $endfor$}
@@ -453,20 +457,20 @@ $if(logo)$
 $endif$
 $endif$
 
-$if(timestamp)$
-\usepackage{fancyhdr}
-\usepackage{datetime}
+% $if(timestamp)$ // place in date instead
+% \usepackage{fancyhdr}
+% \usepackage{datetime}
 
-\pagestyle{fancy}
-\usdate
+% \pagestyle{fancy}
+% \usdate
 
-\lhead{}
-\chead{}
-\rhead{}
-\rfoot{\footnotesize {\color{gray}\texttt{\today{} \currenttime}}}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-$endif$
+% \lhead{}
+% \chead{}
+% \rhead{}
+% \rfoot{\footnotesize {\color{gray}\texttt{\today{} \currenttime}}}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+% $endif$
 
 \begin{document}
 $if(has-frontmatter)$
@@ -478,6 +482,7 @@ $if(beamer)$
 $else$
 \maketitle
 $endif$
+
 $if(abstract)$
 \begin{abstract}
 $abstract$
