@@ -359,9 +359,16 @@ $if(csl-refs)$
    \setlength{\leftmargin}{\cslhangindent}
    \setlength{\itemindent}{-1\cslhangindent}
   \fi
+  $if(smallrefs)$
+  \fontsize{9}{11}\selectfont
+  \setlength{\itemsep}{0pt}}}
+  $else$
   % set entry spacing
   \setlength{\itemsep}{#2\baselineskip}}}
+  $endif$
  {\end{list}}
+
+
 \usepackage{calc}
 \newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
@@ -489,10 +496,18 @@ $endif$
 \subtitle{$subtitle$}
 $endif$
 
+
 $if(author)$
-\author{$for(author)$\large $if(author.name)$ $author.name$ $else$ $author$ $endif$$if(author.affiliation)$ \vspace{0.05in} \\ \normalsize\emph{$author.affiliation$}$endif$$if(author.email)$ \\ \footnotesize \url{$author.email$}\vspace*{0.2in}$endif$\\ $sep$ \and $endfor$}
+\author{$for(author)$\large $if(author.name)$ $author.name$ $else$ $author$ $endif$$if(author.affiliation)$ \vspace{0.05in} \\ \normalsize\emph{$author.affiliation$}$endif$$if(author.email)$ \\ \footnotesize \url{$author.email$}\vspace*{0.2in}$endif$\\ $sep$ \and $endfor$ 
+}
+$else$
+\author{}
+
 $endif$
-\date{$date$\\$if(timestamp)$\footnotesize{\color{gray}\textit{(This version: \usdate\today{}, \currenttime)}}$endif$}
+
+
+  \date{$if(date)$$date$$if(timestamp)$\\$endif$$endif$$if(timestamp)$\footnotesize{\color{gray}\textit{(This version:            
+  \usdate\today{}, \currenttime)}}$endif$}  
 
 $if(beamer)$
 $if(institute)$
