@@ -109,7 +109,7 @@ $if(abstract)$
 $abstract$
 \end{abstract}
 $endif$
-$endif$
+
 
 $for(include-before)$
 $include-before$
@@ -158,6 +158,8 @@ $else$
 \renewcommand\refname{$biblio-title$}
 $endif$
 $endif$
+
+
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 
 $endif$
